@@ -1,5 +1,3 @@
-cd ~/water-analysis
-
 cat > analysis.sh << 'EOF'
 #!/bin/bash
 echo "--------------------------------------------"
