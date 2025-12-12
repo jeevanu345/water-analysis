@@ -1,6 +1,9 @@
+cd ~/water-analysis
+
+cat > analysis.sh << 'EOF'
 #!/bin/bash
 echo "--------------------------------------------"
-echo "🔬 Starting AquaScan Water Analysis..."
+echo "Starting AquaScan Water Analysis..."
 echo "--------------------------------------------"
 
 TIMESTAMP=$(date "+%Y%m%d-%H%M%S")
@@ -14,11 +17,11 @@ MINERALS=$((100 + RANDOM % 200))
 QUALITY_SCORE=$((RANDOM % 10 + 1))
 
 if (( $(echo "$PH < 6.5" | bc -l) )) || (( $(echo "$PH > 8.5" | bc -l) )); then
-    SAFETY="⚠️ UNSAFE: Abnormal pH levels"
+    SAFETY="UNSAFE: Abnormal pH levels"
 elif (( $(echo "$TURBIDITY > 5" | bc -l) )); then
-    SAFETY="⚠️ UNSAFE: High turbidity"
+    SAFETY="UNSAFE: High turbidity"
 else
-    SAFETY="✅ SAFE for consumption"
+    SAFETY="SAFE for consumption"
 fi
 
 {
@@ -37,5 +40,6 @@ echo "--------------------------------------------"
 echo "Report File: $OUTPUT_FILE"
 } > "$OUTPUT_FILE"
 
-echo "✔ Analysis complete. Output file created: $OUTPUT_FILE"
+echo "Analysis complete. Output file created: $OUTPUT_FILE"
 echo "--------------------------------------------"
+EOF
