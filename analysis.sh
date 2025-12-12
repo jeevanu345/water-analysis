@@ -1,16 +1,11 @@
-cat > analysis.sh << 'EOF'
 #!/bin/bash
-# AquaScan - Advanced Water Analysis Simulation Script
-
 echo "--------------------------------------------"
 echo "🔬 Starting AquaScan Water Analysis..."
 echo "--------------------------------------------"
 
-# Timestamp for report file
 TIMESTAMP=$(date "+%Y%m%d-%H%M%S")
 OUTPUT_FILE="analysis_report_${TIMESTAMP}.txt"
 
-# Generate simulated water analysis values
 PH=$(printf "%.1f" "$(echo "scale=1; 6.5 + ($RANDOM % 30)/10" | bc)")
 TURBIDITY=$(printf "%.1f" "$(echo "scale=1; 1 + ($RANDOM % 50)/10" | bc)")
 TEMPERATURE=$((20 + RANDOM % 10))
@@ -18,7 +13,6 @@ HARDNESS=$((50 + RANDOM % 150))
 MINERALS=$((100 + RANDOM % 200))
 QUALITY_SCORE=$((RANDOM % 10 + 1))
 
-# Safety rating logic
 if (( $(echo "$PH < 6.5" | bc -l) )) || (( $(echo "$PH > 8.5" | bc -l) )); then
     SAFETY="⚠️ UNSAFE: Abnormal pH levels"
 elif (( $(echo "$TURBIDITY > 5" | bc -l) )); then
@@ -27,7 +21,6 @@ else
     SAFETY="✅ SAFE for consumption"
 fi
 
-# Write report file
 {
 echo "AquaScan Advanced Water Analysis Report"
 echo "Generated At: $TIMESTAMP"
@@ -46,4 +39,3 @@ echo "Report File: $OUTPUT_FILE"
 
 echo "✔ Analysis complete. Output file created: $OUTPUT_FILE"
 echo "--------------------------------------------"
-EOF
