@@ -1,4 +1,3 @@
-cat > analysis.sh << 'EOF'
 #!/bin/bash
 echo "--------------------------------------------"
 echo "Starting AquaScan Water Analysis..."
@@ -40,4 +39,3 @@ echo "Report File: $OUTPUT_FILE"
 
 echo "Analysis complete. Output file created: $OUTPUT_FILE"
 echo "--------------------------------------------"
-EOF
