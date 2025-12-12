@@ -1,1 +1,1 @@
-echo 'Running water analysis...'; echo 'pH = 7.2'
+echo 'Running updated aqua scan...'; echo 'pH = 7.5'; echo 'Status: safe'
